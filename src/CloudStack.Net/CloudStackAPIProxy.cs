@@ -208,8 +208,8 @@ namespace CloudStack.Net
         public TResponse Request<TResponse>(APIRequest request) where TResponse : new()
         {
             HttpWebRequest webRequest = CreateRequest(request);
-            webRequest.Timeout = (int)this.HttpRequestTimeout.TotalMilliseconds;
-            webRequest.ReadWriteTimeout = (int)this.HttpRequestTimeout.TotalMilliseconds;
+            //webRequest.Timeout = (int)this.HttpRequestTimeout.TotalMilliseconds;
+            //webRequest.ReadWriteTimeout = (int)this.HttpRequestTimeout.TotalMilliseconds;
 
             try
             {
@@ -217,7 +217,7 @@ namespace CloudStack.Net
                 {
                     using (Stream respStrm = httpWebResponse.GetResponseStream())
                     {
-                        respStrm.ReadTimeout = (int)this.HttpRequestTimeout.TotalMilliseconds;
+                        //respStrm.ReadTimeout = (int)this.HttpRequestTimeout.TotalMilliseconds;
                         using (StreamReader streamReader = new StreamReader(respStrm, Encoding.UTF8))
                         {
                             string responseText = streamReader.ReadToEnd();
@@ -265,7 +265,7 @@ namespace CloudStack.Net
                 {
                     using (Stream respStrm = httpWebResponse.GetResponseStream())
                     {
-                        respStrm.ReadTimeout = (int)this.HttpRequestTimeout.TotalMilliseconds;
+                        //respStrm.ReadTimeout = (int)this.HttpRequestTimeout.TotalMilliseconds;
                         using (StreamReader streamReader = new StreamReader(respStrm, Encoding.UTF8))
                         {
                             string responseText = await streamReader.ReadToEndAsync().ConfigureAwait(false);
